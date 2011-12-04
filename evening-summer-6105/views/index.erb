@@ -52,7 +52,7 @@
     </section>
 
     <section id="samples" class="clearfix">
-      <h1>User's information that do not require 'access_token'</h1>
+      <h1>Some user information</h1>
       
       <div>
         <pre>
@@ -62,14 +62,14 @@
         </pre>
       </div>
       
-      <h1>User's posts and friends</h1>
+      <h1>Posts</h1>
 
       <div>
-        <ul class="friends">
+        <ul>
           <% @posts.each do |post| %>
             <li>
               <pre>
-                From <%= post.from %> - Content <%= post.message %> 
+                On date <%= post.created_time %> <%= @user.name %> wrote: <span> <%= post.message %> </span>
               </pre>
             </li>
           <% end %>
@@ -77,7 +77,9 @@
       </div>
 
       <br/>
+      <h1>Friends</h1>
       <br/>
+      
 
       <div class="list">
         <ul class="friends">

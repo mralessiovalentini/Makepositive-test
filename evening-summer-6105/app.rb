@@ -12,7 +12,7 @@ set :show_exceptions, false
 # permissions your app needs.
 # See https://developers.facebook.com/docs/reference/api/permissions/
 # for a full list of permissions
-FACEBOOK_SCOPE = 'user_likes,user_photos,user_photo_video_tags'
+FACEBOOK_SCOPE = 'user_likes,user_photos,user_photo_video_tags,read_stream'
 
 unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
@@ -68,7 +68,8 @@ get "/" do
 
   # access friends, posts directly through the user instance
   @friends = @user.friends[0, 4]
-  @posts = @user.posts
+  # posts
+  @posts = @user.posts[0, 4]
 
   erb :index
 end
